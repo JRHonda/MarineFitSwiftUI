@@ -11,6 +11,7 @@ import SwiftUI
 internal struct LandingView: View {
     
     let width: CGFloat
+    @State private var isForceAltitudeOn: Bool = false
     
     var body: some View {
         VStack {
@@ -27,11 +28,8 @@ internal struct LandingView: View {
             HStack(spacing: 32) {
                 let width: CGFloat = 25
                 
-                Button {
-                    print("open settings")
-                } label: {
-                    LandingSubActionButtonLabel(systemImageName: "gear")
-                }.frame(width: width, height: width)
+                SettingsButton($isForceAltitudeOn)
+                    .diameter(width)
                 
                 Button {
                     print("open last PFT session")
