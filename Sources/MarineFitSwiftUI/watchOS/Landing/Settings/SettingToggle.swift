@@ -9,21 +9,31 @@ import SwiftUI
 
 internal struct SettingToggle: View {
     
-    @Binding private var isOn: Bool
-    private let text: String
-    private let systemImageName: String
+    @Binding var isOn: Bool
+    @State private var isSheetShowing: Bool = false
+    private let toggleText: String
+    private let infoText: String
     
-    internal init(_ isOn: Binding<Bool>, _ text: String, _ systemImageName: String) {
+    internal init(_ isOn: Binding<Bool>, text: String, infoText: String) {
         self._isOn = isOn
-        self.text = text
-        self.systemImageName = systemImageName
+        self.toggleText = text
+        self.infoText = infoText
     }
     
     var body: some View {
         HStack {
             Toggle(isOn: $isOn) {
-                Image(systemName: systemImageName)
-                Text(text)
+                Image(systemName: "info.circle")
+                    .onTapGesture {
+                        isSheetShowing.toggle()
+                    }
+                    .sheet(isPresented: $isSheetShowing) {
+                        ScrollView {
+                            Text(infoText)
+                        }.padding()
+                    }
+                
+                Text(toggleText)
             }
             .foregroundColor(Color.MarineCorps.yellow)
             .padding()
@@ -34,4 +44,10 @@ internal struct SettingToggle: View {
                         lineWidth: 2)
     }
     
+}
+
+struct SettingToggle_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingToggle(.constant(false), text: "Test?", infoText: "This is a test toggle!")
+    }
 }

@@ -7,27 +7,23 @@
 
 import SwiftUI
 
-internal struct SettingsSheetView: View {
+internal struct SettingsSheetView<Settings: SettingsProvider>: View {
     
-    @Binding var isForceAltitudeOn: Bool
-    
-    internal init(_ isForceAltitudeOn: Binding<Bool>) {
-        self._isForceAltitudeOn = isForceAltitudeOn
-    }
+    @EnvironmentObject private var settings: Settings
     
     var body: some View {
         ScrollView {
-            SettingToggle($isForceAltitudeOn,
-                          "Force altitude?",
-                          "info.circle")
+            SettingToggle($settings.isForceAltitudeOn,
+                          text: "Force altitude?",
+                          infoText: "Turn this setting on if you know for sure that you will be performing a PFT event above 5000ft.")
         }.padding()
     }
     
 }
 
 struct SettingsSheetView_Previews: PreviewProvider {
-    @State static var isForceAltitudeOn: Bool = false
     static var previews: some View {
-        SettingsSheetView($isForceAltitudeOn)
+        SettingsSheetView<SettingsProviderImpl_Internal>()
+            .environmentObject(SettingsProviderImpl_Internal())
     }
 }

@@ -7,20 +7,17 @@
 
 import SwiftUI
 
-public struct SettingsButton: View {
+public struct SettingsButton<Settings: SettingsProvider>: View {
     
     // MARK: - Properties
     
-    /// Bind this property to view model in MarineFit to perform an action
-    @Binding public var isForceAltitudeOn: Bool
+    @EnvironmentObject var settings: Settings
     
     @State private var isSheetPresented: Bool = false
     
     // MARK: - Public Init
     
-    public init(_ isForceAltitudeOn: Binding<Bool>) {
-        self._isForceAltitudeOn = isForceAltitudeOn
-    }
+    public init() { }
     
     // MARK: - Body
     
@@ -35,8 +32,9 @@ public struct SettingsButton: View {
             // action to perform upon dismissal
             // No plans yet to use this functionality in MarineFit
         } content: {
-            SettingsSheetView($isForceAltitudeOn)
+            SettingsSheetView<Settings>()
         }
+        .environmentObject(settings)
     }
 }
 
@@ -44,6 +42,11 @@ public struct SettingsButton: View {
 
 struct SettingsButton_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsButton(.constant(false))
+        SettingsButton<SettingsProviderImpl_Internal>()
+            .environmentObject(SettingsProviderImpl_Internal())
     }
+}
+
+internal class SettingsProviderImpl_Internal: SettingsProvider {
+    @Published var isForceAltitudeOn: Bool = false
 }

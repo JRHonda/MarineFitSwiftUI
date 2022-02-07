@@ -8,10 +8,11 @@
 import SwiftUI
 
 /// ** Internal Prototype only - not for use in production code **
-internal struct LandingView: View {
+internal struct LandingView<Settings: SettingsProvider>: View {
     
     let width: CGFloat
     @State private var isForceAltitudeOn: Bool = false
+    @StateObject fileprivate var settings = SettingsProviderImpl_Internal()
     
     var body: some View {
         VStack {
@@ -28,7 +29,8 @@ internal struct LandingView: View {
             HStack(spacing: 32) {
                 let width: CGFloat = 25
                 
-                SettingsButton($isForceAltitudeOn)
+                SettingsButton<SettingsProviderImpl_Internal>()
+                    .environmentObject(settings)
                     .diameter(width)
                 
                 Button {
@@ -44,8 +46,7 @@ internal struct LandingView: View {
                 }.frame(width: width, height: width)
                 
             }.buttonStyle(PlainButtonStyle())
-        }
-        .padding()
+        }.padding()
     }
 }
 
@@ -54,7 +55,7 @@ struct LandingView_Previews: PreviewProvider {
         Group {
             // preview takes on scheme selection
             GeometryReader { proxy in
-                LandingView(width: proxy.size.width / 1.5)
+                LandingView<SettingsProviderImpl_Internal>(width: proxy.size.width / 1.5)
                     .frame(width: proxy.size.width,
                            height: proxy.size.height)
             }
@@ -62,7 +63,7 @@ struct LandingView_Previews: PreviewProvider {
             /** subsequent preview devices can be added manually */
             
             GeometryReader { proxy in
-                LandingView(width: proxy.size.width / 1.5)
+                LandingView<SettingsProviderImpl_Internal>(width: proxy.size.width / 1.5)
                     .frame(width: proxy.size.width,
                            height: proxy.size.height)
             }.previewDevice("Apple Watch Series 5 - 40mm")

@@ -14,7 +14,6 @@ public extension View {
     }
     
     func clippedOverlay<Fill: ShapeStyle, Stroke: ShapeStyle, S: Shape>(_ shape: S, _ fillStyle: Fill, strokeBorder: Stroke, lineWidth: CGFloat = 1) -> some View {
-        
         self
             .clipShape(shape)
             .overlay(
