@@ -35,12 +35,12 @@ internal struct SettingToggle: View {
                 
                 Text(toggleText)
             }
-            .foregroundColor(Color.MarineCorps.yellow)
+            .foregroundColor(.MarineCorps.yellow)
             .padding()
         }
         .clippedOverlay(RoundedRectangle(cornerRadius: 16),
                         .clear,
-                        strokeBorder: .red,
+                        strokeBorder: Color.MarineCorps.red,
                         lineWidth: 2)
     }
     
@@ -48,6 +48,8 @@ internal struct SettingToggle: View {
 
 struct SettingToggle_Previews: PreviewProvider {
     static var previews: some View {
-        SettingToggle(.constant(false), text: "Test?", infoText: "This is a test toggle!")
+        SettingToggle(.constant(false),
+                      text: "Test?",
+                      infoText: "This is a test toggle!")
     }
 }

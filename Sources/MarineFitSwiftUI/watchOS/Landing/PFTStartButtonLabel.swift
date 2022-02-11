@@ -45,14 +45,17 @@ public struct PFTStartButtonLabel<S: Shape, Fill: ShapeStyle>: View {
     }
 }
 
-struct PFTStartButton_Previews: PreviewProvider {
+// MARK: - Previews
+
+internal struct PFTStartButton_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { proxy in
-            PFTStartButtonLabel(text: "START", diameter: proxy.size.width / 1.5, shape: Circle(), fill: .clear)
-                .frame(width: proxy.size.width,
-                       height: proxy.size.height)
+            PFTStartButtonLabel(text: "START",
+                                diameter: proxy.size.width / 1.5,
+                                shape: Circle(),
+                                fill: .clear
+            ).frame(width: proxy.size.width,
+                    height: proxy.size.height)
         }
     }
 }
-
-

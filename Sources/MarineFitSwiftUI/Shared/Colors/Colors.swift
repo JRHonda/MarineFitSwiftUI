@@ -18,4 +18,3 @@ public extension Color {
         public static let red = Color(.init(srgbRed: 231/255, green: 60/255, blue: 48/255, alpha: 1))
     }
 }
-

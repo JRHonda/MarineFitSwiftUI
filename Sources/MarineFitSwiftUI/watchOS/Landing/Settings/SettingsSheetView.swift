@@ -9,7 +9,11 @@ import SwiftUI
 
 internal struct SettingsSheetView<Settings: SettingsProvider>: View {
     
+    // MARK: - EnvironmentObject
+    
     @EnvironmentObject private var settings: Settings
+    
+    // MARK: - Body
     
     var body: some View {
         ScrollView {
@@ -20,6 +24,8 @@ internal struct SettingsSheetView<Settings: SettingsProvider>: View {
     }
     
 }
+
+// MARK: - Previews
 
 struct SettingsSheetView_Previews: PreviewProvider {
     static var previews: some View {

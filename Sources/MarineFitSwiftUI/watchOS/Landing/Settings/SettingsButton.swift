@@ -9,9 +9,11 @@ import SwiftUI
 
 public struct SettingsButton<Settings: SettingsProvider>: View {
     
-    // MARK: - Properties
+    // MARK: - EnvironmentObject
     
     @EnvironmentObject var settings: Settings
+    
+    // MARK: - Properties
     
     @State private var isSheetPresented: Bool = false
     
@@ -45,8 +47,4 @@ struct SettingsButton_Previews: PreviewProvider {
         SettingsButton<SettingsProviderImpl_Internal>()
             .environmentObject(SettingsProviderImpl_Internal())
     }
-}
-
-internal class SettingsProviderImpl_Internal: SettingsProvider {
-    @Published var isForceAltitudeOn: Bool = false
 }
