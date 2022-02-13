@@ -13,6 +13,7 @@ public protocol OnboardingProfileProvider: ObservableObject {
     var name: String { get set }
 }
 
+/// For internal previews
 internal class OnboardingProfile: OnboardingProfileProvider {
     
     // MARK: - Published
@@ -29,6 +30,7 @@ public protocol OnboardingManagerProvider: ObservableObject {
     var numberOfPages: Int { get }
 }
 
+/// For internal previews
 internal class OnboardingManager: OnboardingManagerProvider {
     
     // MARK: - Published

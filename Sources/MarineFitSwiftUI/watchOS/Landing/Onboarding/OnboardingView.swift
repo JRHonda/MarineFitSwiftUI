@@ -40,10 +40,8 @@ public struct OnboardingView<Manager: OnboardingManagerProvider, Provider: Onboa
                             GenderSelectionView(genderSelected: $profile.gender)
                             
                         case .dateOfBirth:
-                            // TODO: - Not yet implemented
-                            // PLACEHOLDER
-                            WelcomeView()
-                                .multilineTextAlignment(.center)
+                            DateOfBirthPickerView(dateSelected: $profile.dateOfBirth)
+                                .frame(height: proxy.size.height / 2)
                             
                         case .name:
                             VStack(spacing: 8) {
@@ -58,7 +56,7 @@ public struct OnboardingView<Manager: OnboardingManagerProvider, Provider: Onboa
                     }
                     
                 }.padding()
-            
+                    
                 // Next button
                 Button {
                     if onboarding.onboardingState != .name {
@@ -97,7 +95,6 @@ public struct OnboardingView<Manager: OnboardingManagerProvider, Provider: Onboa
             case .gender:
                 return profile.gender == .none
             case .dateOfBirth:
-                // not yet implemented
                 return false
             case .name:
                 if onboarding.willSkipAddingName {

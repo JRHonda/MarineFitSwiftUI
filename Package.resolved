@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LagunaCalendar",
+        "repositoryURL": "https://github.com/JRHonda/LagunaCalendar",
+        "state": {
+          "branch": null,
+          "revision": "22d82c3b7a470032ff1444479aa6ec873aa1ee31",
+          "version": "0.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
