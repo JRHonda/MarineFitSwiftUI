@@ -11,8 +11,10 @@ import SwiftUI
 internal struct LandingView<Settings: SettingsProvider>: View {
     
     let width: CGFloat
+    
     @State private var isForceAltitudeOn: Bool = false
     @StateObject fileprivate var settings = SettingsProviderImpl_Internal()
+    let lastPFTSession = lastPFTSession_Internal
     
     var body: some View {
         VStack {
@@ -33,17 +35,8 @@ internal struct LandingView<Settings: SettingsProvider>: View {
                     .environmentObject(settings)
                     .diameter(width)
                 
-                Button {
-                    print("open last PFT session")
-                } label: {
-                    LandingSubActionButtonLabel(systemImageName: "heart.text.square")
-                }.frame(width: width, height: width)
-                
-                Button {
-                    print("open app information")
-                } label: {
-                    LandingSubActionButtonLabel(systemImageName: "info.circle")
-                }.frame(width: width, height: width)
+                DisplayLastPFTSessionButton(lastPFTSession: lastPFTSession)
+                    .frame(width: width, height: width)
                 
             }.buttonStyle(PlainButtonStyle())
         }.padding()

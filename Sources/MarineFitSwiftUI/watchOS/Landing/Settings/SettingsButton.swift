@@ -42,7 +42,7 @@ public struct SettingsButton<Settings: SettingsProvider>: View {
 
 // MARK: - Previews
 
-struct SettingsButton_Previews: PreviewProvider {
+internal struct SettingsButton_Previews: PreviewProvider {
     static var previews: some View {
         SettingsButton<SettingsProviderImpl_Internal>()
             .environmentObject(SettingsProviderImpl_Internal())

@@ -63,14 +63,21 @@ public struct OnboardingView<Manager: OnboardingManagerProvider, Provider: Onboa
                         onboarding.pageNumber += 1
                     }
                 } label: {
-                    Text(onboarding.onboardingState == .name
-                         ? "Submit"
-                         : "Next")
-                        .foregroundColor(.MarineCorps.red)
+                    ZStack {
+                        Color
+                            .clear
+                            .clippedOverlay(Capsule(),
+                                            .clear,
+                                            strokeBorder: Color.MarineCorps.red,
+                                            lineWidth: 2)
+                        Text(onboarding.onboardingState == .name
+                             ? "Submit"
+                             : "Next")
+                            .foregroundColor(.MarineCorps.red)
+                    }
                 }
-                .frame(width: proxy.size.width * 0.85, height: 40)
-                .clippedOverlay(Capsule(), .clear, strokeBorder: Color.MarineCorps.red, lineWidth: 2)
                 .buttonStyle(PlainButtonStyle())
+                .frame(width: proxy.size.width * 0.85, height: 40)
                 .disabled(shouldNextButtonBeDisabled())
               
                 // Custom paginated view
