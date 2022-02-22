@@ -27,7 +27,7 @@ internal struct GenderButton: View {
             ZStack {
                 Color
                     .clear
-                    .clippedOverlay(Capsule(),
+                    .contentShapedOverlay(Capsule(),
                                     fillButtonIfGender(is: genderExpected),
                                     strokeBorder: Color.MarineCorps.red,
                                     lineWidth: 2)

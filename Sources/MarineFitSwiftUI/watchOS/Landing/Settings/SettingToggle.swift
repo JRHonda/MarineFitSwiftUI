@@ -38,7 +38,7 @@ internal struct SettingToggle: View {
             .foregroundColor(.MarineCorps.yellow)
             .padding()
         }
-        .clippedOverlay(RoundedRectangle(cornerRadius: 16),
+        .contentShapedOverlay(RoundedRectangle(cornerRadius: 16),
                         .clear,
                         strokeBorder: Color.MarineCorps.red,
                         lineWidth: 2)

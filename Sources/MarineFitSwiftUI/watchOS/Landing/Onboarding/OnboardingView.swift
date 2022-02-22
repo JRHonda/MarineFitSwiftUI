@@ -14,6 +14,7 @@ public enum OnboardingState: Int, CaseIterable {
     case name
 }
 
+/// View for ushering user through onboarding setup
 public struct OnboardingView<Manager: OnboardingManagerProvider, Provider: OnboardingProfileProvider>: View {
     
     // MARK: - EnvironmentObject
@@ -66,7 +67,7 @@ public struct OnboardingView<Manager: OnboardingManagerProvider, Provider: Onboa
                     ZStack {
                         Color
                             .clear
-                            .clippedOverlay(Capsule(),
+                            .contentShapedOverlay(Capsule(),
                                             .clear,
                                             strokeBorder: Color.MarineCorps.red,
                                             lineWidth: 2)

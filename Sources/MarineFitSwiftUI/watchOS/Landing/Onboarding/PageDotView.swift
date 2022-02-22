@@ -19,7 +19,7 @@ struct PageDotView: View {
     var body: some View {
         Color.clear
             .diameter(diameterConstant)
-            .clippedOverlay(Circle(),
+            .contentShapedOverlay(Circle(),
                             hasFinishedPage
                             ? Color.MarineCorps.red
                             : .clear,

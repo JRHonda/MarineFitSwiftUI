@@ -40,14 +40,14 @@ public struct ScoreBar: View {
         ZStack {
             GeometryReader { proxy in
                 Color.clear
-                    .clippedOverlay(Capsule(),
+                    .contentShapedOverlay(Capsule(),
                                     eventTypeColor,
                                     strokeBorder: .clear,
                                     lineWidth: 0)
                     .opacity(0.25)
                 
                 Color.clear
-                    .clippedOverlay(Capsule(),
+                    .contentShapedOverlay(Capsule(),
                                     eventTypeColor,
                                     strokeBorder: .clear,
                                     lineWidth: 0)

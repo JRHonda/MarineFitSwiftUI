@@ -38,7 +38,7 @@ internal struct GenderSelectionView: View {
 
 // MARK: - Previews
 
-struct GenderSelectionView_Previews: PreviewProvider {
+internal struct GenderSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         GenderSelectionView(genderSelected: .constant(.male))
     }

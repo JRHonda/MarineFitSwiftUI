@@ -32,7 +32,7 @@ public struct PFTStartButtonLabel<S: Shape, Fill: ShapeStyle>: View {
                 .fill(.clear)
                 .diameter(diameter)
             // supports building filled or unfilled shape
-                .clippedOverlay(shape,
+                .contentShapedOverlay(shape,
                                 fill,
                                 strokeBorder: Color.MarineCorps.red,
                                 lineWidth: 2)
