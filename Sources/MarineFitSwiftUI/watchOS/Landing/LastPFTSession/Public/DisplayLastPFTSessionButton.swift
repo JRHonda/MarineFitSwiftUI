@@ -11,7 +11,7 @@ public struct DisplayLastPFTSessionButton: View {
     
     // MARK: - Private State
     
-    @State private var isSheetPresented: Bool = false
+    @Binding var isSheetPresented: Bool
     
     // MARK: - Properties
     
@@ -19,8 +19,9 @@ public struct DisplayLastPFTSessionButton: View {
     
     // MARK: - Public Init
     
-    public init(lastPFTSession: PFTSessionDataModelAdapter) {
+    public init(lastPFTSession: PFTSessionDataModelAdapter, isSheetPresented: Binding<Bool>) {
         self.lastPFTSession = lastPFTSession
+        self._isSheetPresented = isSheetPresented
     }
     
     // MARK: - Body
@@ -46,6 +47,6 @@ public struct DisplayLastPFTSessionButton: View {
 
 internal struct DisplayLastPFTSessionButton_Previews: PreviewProvider {
     static var previews: some View {
-        DisplayLastPFTSessionButton(lastPFTSession: lastPFTSession_Internal)
+        DisplayLastPFTSessionButton(lastPFTSession: lastPFTSession_Internal, isSheetPresented: .constant(false))
     }
 }

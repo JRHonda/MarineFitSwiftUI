@@ -13,6 +13,7 @@ internal struct LandingView<Settings: SettingsProvider>: View {
     let width: CGFloat
     
     @State private var isForceAltitudeOn: Bool = false
+    @State private var willReviewPFTSessionWhenComplete: Bool = false
     @StateObject fileprivate var settings = SettingsProviderImpl_Internal()
     let lastPFTSession = lastPFTSession_Internal
     
@@ -35,7 +36,7 @@ internal struct LandingView<Settings: SettingsProvider>: View {
                     .environmentObject(settings)
                     .diameter(width)
                 
-                DisplayLastPFTSessionButton(lastPFTSession: lastPFTSession)
+                DisplayLastPFTSessionButton(lastPFTSession: lastPFTSession, isSheetPresented: $willReviewPFTSessionWhenComplete)
                     .frame(width: width, height: width)
                 
             }.buttonStyle(PlainButtonStyle())
