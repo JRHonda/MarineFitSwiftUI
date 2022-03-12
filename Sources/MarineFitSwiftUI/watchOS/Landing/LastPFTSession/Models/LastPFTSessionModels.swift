@@ -1,25 +1,25 @@
 import SwiftUI
 
-internal enum PFTEventCategory: String {
-    case cardio
+public enum PFTEventCategory: String {
+    case endurance
     case upperbody
     case core
     
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         switch rawValue {
+            case "endurance", "Endurance":
+                self = .endurance
             case "upperbody", "Upperbody", "UpperBody":
                 self = .upperbody
-            case "cardio", "Cardio":
-                self = .cardio
             case "core", "Core", "CoreStrength", "corestrength":
                 self = .core
             default: return nil
         }
     }
     
-    func mapToColor() -> Color {
+    public func mapToColor() -> Color {
         switch self {
-            case .cardio: return .green
+            case .endurance: return .green
             case .upperbody: return .red
             case .core: return .blue
         }
@@ -32,12 +32,12 @@ public struct PFTEventDataModelAdapter: Comparable {
         lhs.pftScore > rhs.pftScore
     }
     
-    internal let categoryName: String
-    internal let eventName: String
-    internal let eventScore: String
-    internal let pftScore: Int
+    public let categoryName: String
+    public let eventName: String
+    public let eventScore: String
+    public let pftScore: Int
     
-    internal var category: PFTEventCategory? {
+    public var category: PFTEventCategory? {
         .init(rawValue: categoryName)
     }
     
@@ -51,10 +51,10 @@ public struct PFTEventDataModelAdapter: Comparable {
 
 /// Data model for a PFT session
 public struct PFTSessionDataModelAdapter {
-    internal let date: String
-    internal let events: [PFTEventDataModelAdapter]
+    public let date: String
+    public let events: [PFTEventDataModelAdapter]
     
-    internal var totalScore: Int {
+    public var totalScore: Int {
         events.compactMap { $0.pftScore }.reduce(0, +)
     }
     

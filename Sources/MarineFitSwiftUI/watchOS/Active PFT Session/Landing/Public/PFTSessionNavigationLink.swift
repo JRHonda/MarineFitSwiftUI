@@ -17,9 +17,9 @@ public struct PFTSessionNavigationLink<Destination: View, PFTScoreBadge: View>: 
     
     // MARK: - Properties
     
-    internal let event: PFTEventDataModelAdapter
-    internal let destination: Destination
-    internal let pftScoreBadge: PFTScoreBadge
+    public let event: PFTEventDataModelAdapter
+    public let destination: Destination
+    public let pftScoreBadge: PFTScoreBadge
     
     // MARK: - Public Init
     

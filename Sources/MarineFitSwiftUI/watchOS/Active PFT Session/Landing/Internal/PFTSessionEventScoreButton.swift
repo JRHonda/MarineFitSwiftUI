@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-internal struct PFTSessionEventScoreButton: View {
+public struct PFTSessionEventScoreButton: View {
     
     // MARK: - Properties
     
-    internal let event: PFTEventDataModelAdapter
+    public let event: PFTEventDataModelAdapter
     
     // MARK: - Body
     
-    var body: some View {
+    public var body: some View {
 //        Button {
 //            // TODO: - Support showing workout completed
 //        } label: {
