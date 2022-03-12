@@ -22,9 +22,15 @@ public struct OnboardingView<Manager: OnboardingManagerProvider, Provider: Onboa
     @EnvironmentObject var onboarding: Manager
     @EnvironmentObject var profile: Provider
     
+    // MARK: - Binding
+    
+    @Binding var didTapSubmit: Bool
+    
     // MARK: - Public Init
     
-    public init() { }
+    public init(didTapSubmit: Binding<Bool>) {
+        self._didTapSubmit = didTapSubmit
+    }
     
     // MARK: - Body
     
@@ -62,6 +68,8 @@ public struct OnboardingView<Manager: OnboardingManagerProvider, Provider: Onboa
                 Button {
                     if onboarding.onboardingState != .name {
                         onboarding.pageNumber += 1
+                    } else {
+                        didTapSubmit = true
                     }
                 } label: {
                     ZStack {
@@ -121,8 +129,10 @@ struct OnboardingView_Previews: PreviewProvider {
     
     @StateObject static var profile = OnboardingProfile()
     
+    @State static var didTapSubmit: Bool = false
+    
     static var previews: some View {
-        OnboardingView<OnboardingManager, OnboardingProfile>()
+        OnboardingView<OnboardingManager, OnboardingProfile>(didTapSubmit: $didTapSubmit)
             .environmentObject(onboarding)
             .environmentObject(profile)
             //.previewDevice("Apple Watch Series 6 - 40mm")
