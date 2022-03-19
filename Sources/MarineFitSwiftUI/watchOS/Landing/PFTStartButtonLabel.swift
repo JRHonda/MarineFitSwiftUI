@@ -17,7 +17,12 @@ public struct PFTStartButtonLabel<S: Shape, Fill: ShapeStyle>: View {
     private let shape: S
     private let fill: Fill
     
-    public init(text: String, diameter: CGFloat, shape: S, fill: Fill) {
+    public init(
+        text: String,
+        diameter: CGFloat,
+        shape: S,
+        fill: Fill
+    ) {
         self.text = text
         self.diameter = diameter
         self.shape = shape

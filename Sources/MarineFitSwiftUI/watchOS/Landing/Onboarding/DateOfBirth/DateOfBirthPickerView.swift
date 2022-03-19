@@ -8,15 +8,15 @@
 import SwiftUI
 import LagunaCalendar
 
-internal struct DateOfBirthPickerView: View {
+public struct DateOfBirthPickerView: View {
     
     // MARK: - Binding
     
-    @Binding var dateSelected: Date
+    @Binding public var dateSelected: Date
     
     // MARK: - Properties
     
-    var page: Int { OnboardingState.dateOfBirth.rawValue }
+    var page: Int { 3 }
     
     // MARK: - Private Propertires
     
@@ -35,7 +35,7 @@ internal struct DateOfBirthPickerView: View {
     
     // MARK: - Body
     
-    var body: some View {
+    public var body: some View {
         VStack {
             Text("Date of birth?")
             HStack {

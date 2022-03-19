@@ -7,24 +7,38 @@
 
 import SwiftUI
 
-struct PageDotView: View {
+public struct PageDotView: View {
     
     // MARK: - Properties
     
     let hasFinishedPage: Bool
-    let diameterConstant: CGFloat = 16
+    let diameter: CGFloat
+    
+    public init(hasFinishedPage: Bool, diameter: CGFloat = 16) {
+        self.hasFinishedPage = hasFinishedPage
+        self.diameter = diameter
+    }
     
     // MARK: - Body
     
-    var body: some View {
+    public var body: some View {
+        let fillStyle = hasFinishedPage ? Color.MarineCorps.red : .clear
+        
+        dotView(with: fillStyle)
+    }
+    
+    // MARK: - ViewBuilders
+    
+    @ViewBuilder
+    private func dotView<Fill: ShapeStyle>(with fillStyle: Fill) -> some View {
         Color.clear
-            .diameter(diameterConstant)
-            .contentShapedOverlay(Circle(),
-                            hasFinishedPage
-                            ? Color.MarineCorps.red
-                            : .clear,
-                            strokeBorder: Color.MarineCorps.red,
-                            lineWidth: 1)
+            .diameter(diameter)
+            .contentShapedOverlay(
+                Circle(),
+                fillStyle,
+                strokeBorder: Color.MarineCorps.red,
+                lineWidth: 1
+            )
     }
 }
 

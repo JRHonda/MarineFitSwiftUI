@@ -7,30 +7,36 @@
 
 import SwiftUI
 
-internal struct GenderButton: View {
+public struct GenderButton: View {
     
     // MARK: - Binding
     
-    @Binding var genderSelected: GenderSelection
+    @Binding public var genderSelected: GenderSelection
     
     // MARK: - Properties
     
-    let genderExpected: GenderSelection
-    let action: () -> Void
+    private let genderExpected: GenderSelection
+    private let action: () -> Void
+    
+    // MARK: - Public Init
+    
+    public init(genderSelected: Binding<GenderSelection>, genderExpected: GenderSelection, action: @escaping () -> Void) {
+        self._genderSelected = genderSelected
+        self.genderExpected = genderExpected
+        self.action = action
+    }
     
     // MARK: - Body
     
-    var body: some View {
-        Button {
-            action()
-        } label: {
+    public var body: some View {
+        Button { action() } label: {
             ZStack {
                 Color
                     .clear
                     .contentShapedOverlay(Capsule(),
-                                    fillButtonIfGender(is: genderExpected),
-                                    strokeBorder: Color.MarineCorps.red,
-                                    lineWidth: 2)
+                                          fillButtonIfGender(is: genderExpected),
+                                          strokeBorder: Color.MarineCorps.red,
+                                          lineWidth: 2)
                 Text(genderExpected.rawValue).padding()
             }
         }.buttonStyle(PlainButtonStyle())

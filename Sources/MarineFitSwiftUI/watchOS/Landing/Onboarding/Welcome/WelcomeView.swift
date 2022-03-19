@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-internal struct WelcomeView: View {
+public struct WelcomeView: View {
     
     // MARK: - Properties
     
-    var page: Int { OnboardingState.welcome.rawValue }
+    public var page: Int { 1 }
+    
+    // MARK: - Public Init
+    
+    public init() { }
     
     // MARK: - Body
     
-    var body: some View {
+    public var body: some View {
         Text("Semper Fi! Welcome to MarineFit. We have a few questions to get started.")
     }
 }
