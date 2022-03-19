@@ -17,7 +17,12 @@ public struct PFTStartButtonLabel<S: Shape, Fill: ShapeStyle>: View {
     private let shape: S
     private let fill: Fill
     
-    public init(text: String, diameter: CGFloat, shape: S, fill: Fill) {
+    public init(
+        text: String,
+        diameter: CGFloat,
+        shape: S,
+        fill: Fill
+    ) {
         self.text = text
         self.diameter = diameter
         self.shape = shape
@@ -32,7 +37,7 @@ public struct PFTStartButtonLabel<S: Shape, Fill: ShapeStyle>: View {
                 .fill(.clear)
                 .diameter(diameter)
             // supports building filled or unfilled shape
-                .clippedOverlay(shape,
+                .contentShapedOverlay(shape,
                                 fill,
                                 strokeBorder: Color.MarineCorps.red,
                                 lineWidth: 2)

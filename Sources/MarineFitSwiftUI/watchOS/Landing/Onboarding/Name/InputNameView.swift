@@ -7,19 +7,25 @@
 
 import SwiftUI
 
-internal struct InputNameView: View {
+public struct InputNameView: View {
     
     // MARK: - Binding
     
-    @Binding var input: String
+    @Binding public var input: String
     
     // MARK: - Properties
     
-    var page: Int { OnboardingState.name.rawValue }
+    public var page: Int { 4 }
+    
+    // MARK: - Public Init
+    
+    public init(input: Binding<String>) {
+        self._input = input
+    }
     
     // MARK: - Body
     
-    var body: some View {
+    public var body: some View {
         TextField("Username", text: $input)
     }
 }

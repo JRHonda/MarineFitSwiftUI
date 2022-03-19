@@ -13,13 +13,11 @@ public extension View {
         self.frame(width: value, height: value, alignment: alignment)
     }
     
-    func clippedOverlay<Fill: ShapeStyle, Stroke: ShapeStyle, S: Shape>(_ shape: S, _ fillStyle: Fill, strokeBorder: Stroke, lineWidth: CGFloat = 1) -> some View {
+    func contentShapedOverlay<Fill: ShapeStyle, Stroke: ShapeStyle, S: Shape>(_ shape: S, _ fillStyle: Fill, strokeBorder: Stroke, lineWidth: CGFloat = 1) -> some View {
         self
-            .clipShape(shape)
+            .contentShape(shape)
             .overlay(
                 shape.fill(fillStyle, strokeBorder: strokeBorder, lineWidth: lineWidth)
             )
     }
 }
-
-

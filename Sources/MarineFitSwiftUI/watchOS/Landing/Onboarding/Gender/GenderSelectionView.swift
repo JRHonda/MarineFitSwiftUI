@@ -13,7 +13,7 @@ public enum GenderSelection: String {
     case female = "F"
 }
 
-internal struct GenderSelectionView: View {
+public struct GenderSelectionView: View {
     
     // MARK: - Binding
     
@@ -21,11 +21,17 @@ internal struct GenderSelectionView: View {
     
     // MARK: - Properties
     
-    var page: Int { OnboardingState.gender.rawValue }
+    public var page: Int { 2 }
+    
+    // MARK: - Public Init
+    
+    public init(genderSelected: Binding<GenderSelection>) {
+        self._genderSelected = genderSelected
+    }
     
     // MARK: - Body
     
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 8) {
             Text("Gender?")
             HStack(spacing: 8) {
@@ -38,7 +44,7 @@ internal struct GenderSelectionView: View {
 
 // MARK: - Previews
 
-struct GenderSelectionView_Previews: PreviewProvider {
+internal struct GenderSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         GenderSelectionView(genderSelected: .constant(.male))
     }
